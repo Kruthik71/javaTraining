@@ -14,6 +14,12 @@ public class NumberSystemServlet extends HttpServlet {
 		int input1 = Integer.parseInt(request.getParameter("input1"));
 		int input2 = Integer.parseInt(request.getParameter("input2"));
 
+		String result=convert(system,input1,input2);
+		request.setAttribute("result", result);
+		request.getRequestDispatcher("result.jsp").forward(request, response);
+	}
+
+	public String convert(String system, int input1, int input2) {
 		int sum = input1 + input2;
 		String result;
 
@@ -52,9 +58,6 @@ public class NumberSystemServlet extends HttpServlet {
 			result = "Invalid Selection";
 			break;
 		}
-
-		request.setAttribute("result", result);
-		request.getRequestDispatcher("result.jsp").forward(request, response);
+		return result;
 	}
-
 }
