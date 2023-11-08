@@ -26,7 +26,7 @@ public class Orders {
 	@OneToOne(targetEntity = OrderSummary.class, cascade = { CascadeType.MERGE, CascadeType.PERSIST,
 			CascadeType.REFRESH }, fetch = FetchType.LAZY)
 	private OrderSummary orderSummary;
-
+	
 	public Orders(Date orderDate) {
 		super();
 		this.orderDate = orderDate;
