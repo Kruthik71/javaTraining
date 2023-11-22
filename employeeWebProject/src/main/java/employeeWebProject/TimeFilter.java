@@ -27,7 +27,7 @@ public class TimeFilter implements Filter {
         long endTimeMillis = System.currentTimeMillis();
         long endTimeNanos = System.nanoTime();
 
-        String uri = request.getServletContext().getContextPath() + request.getServletContext();
+        String uri = ((FilterConfig) request).getServletContext().getContextPath() + ((FilterConfig) request).getServletContext();
         long elapsedTimeMillis = endTimeMillis - startTimeMillis;
         long elapsedTimeNanos = endTimeNanos - startTimeNanos;
 

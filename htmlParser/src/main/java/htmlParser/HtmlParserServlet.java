@@ -18,12 +18,12 @@ public class HtmlParserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Part filePart = request.getPart("htmlFile");
-        InputStream fileContent = filePart.getInputStream();
+//        Part filePart = request.getPart("htmlFile");
+//        InputStream fileContent = filePart.getInputStream();
         
-        List<String> result = HtmlParser.parseHtml(fileContent);
+//        List<String> result = HtmlParser.parseHtml(fileContent);
         
-        request.setAttribute("tags", result);
+//        request.setAttribute("tags", result);
         request.getRequestDispatcher("results.jsp").forward(request, response);
     }
 }
