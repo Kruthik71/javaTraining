@@ -7,11 +7,72 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edit Orders Page</title>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    color: #333;
+}
+
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+input[type="text"] {
+    width: calc(100% - 12px);
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+input[type="submit"]:last-child {
+    margin-right: 0;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+</style>
 </head>
 <body>
 <% OrderModel order=(OrderModel)request.getAttribute("order"); %>
-	<h3>Create a new order</h3>
 	<form method="post" action="save?id=<%= order.getId() %>">
 	<table>
 		<tr>

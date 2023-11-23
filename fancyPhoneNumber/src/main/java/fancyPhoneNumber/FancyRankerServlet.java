@@ -12,7 +12,7 @@ public class FancyRankerServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String phoneNumbersInput = request.getParameter("phoneNumbers");
         String[] phoneNumbersArray = phoneNumbersInput.split("\n");
         List<String> phoneNumbers = Arrays.asList(phoneNumbersArray);

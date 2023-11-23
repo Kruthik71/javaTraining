@@ -1,6 +1,5 @@
 package com.valtech.training.patternchecker;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -16,19 +15,19 @@ public class PatternCheckerServiceImpl implements PatternCheckerService {
 			int score = 0;
 
 			if (isAllDigitsSame(phoneNumber)) {
-				score += 6;
+				score += 10;
 			}
 
 			if (isPalindrome(phoneNumber)) {
-				score += 5;
+				score += 6;
 			}
 
 			if (hasRepeatedDigit(phoneNumber)) {
-				score += 4;
+				score += 1;
 			}
 
 			if (hasAscendingSequence(phoneNumber)) {
-				score += 3;
+				score += 2;
 			}
 
 			if (hasDescendingSequence(phoneNumber)) {
@@ -36,7 +35,35 @@ public class PatternCheckerServiceImpl implements PatternCheckerService {
 			}
 
 			if (hasConsecutiveSequence(phoneNumber)) {
-				score += 1;
+				score += 3;
+			}
+			
+			if(sumOfNumbersisOddorEven(phoneNumber)) {
+				score+=1;
+			}
+			
+			else if(!sumOfNumbersisOddorEven(phoneNumber)) {
+				score+=1;
+			}
+		
+			//Multiple of 5 or 3 or both
+			score+=sumOfNumbersIsaMultipleofFiveorThree(phoneNumber);
+			
+			if(allDigitsAreOdd(phoneNumber)) {
+				score+=1;
+			}
+			
+			if(allDigitsAreEven(phoneNumber)) {
+				score+=1;
+			}
+			
+			if(numberAtOddPlacesIsSame(phoneNumber)) {
+				score+=3;
+			}
+			
+			if(numbersAtOddAndEvenBothAreSame(phoneNumber)) {
+//				System.out.println(phoneNumber);
+				score+=3;
 			}
 
 			phoneNumberScores.put(phoneNumber, score);
@@ -57,6 +84,52 @@ public class PatternCheckerServiceImpl implements PatternCheckerService {
 //      combinedList.addAll(nonFancyNumbers);
 
 		return phoneNumberScores;
+	}
+
+	private boolean numbersAtOddAndEvenBothAreSame(String phoneNumber) {
+//		"^(\\d)(\\d)\\1\\2\\1\\2\\1\\2\\1\\2$"
+		return phoneNumber.matches("^(\\d)(\\d)\\1\\2\\1\\2\\1\\2\\1\\2$");
+	}
+
+	private boolean numberAtOddPlacesIsSame(String phoneNumber) {
+//		"(\d)\d\1\d\1\d\1\d\1\d"
+		return phoneNumber.matches("(\\d)\\d\\1\\d\\1\\d\\1\\d\\1\\d");
+	}
+
+	private boolean allDigitsAreEven(String phoneNumber) {
+		return phoneNumber.matches("^[13579]{10}$");
+	}
+
+	private boolean allDigitsAreOdd(String phoneNumber) {
+		return phoneNumber.matches("^[02468]{10}$");
+	}
+
+	private int sumOfNumbersIsaMultipleofFiveorThree(String phoneNumber) {
+		int sumOfNumbers=0;
+		for (int i = 0; i < phoneNumber.length(); i++) {
+			sumOfNumbers+=Character.getNumericValue(phoneNumber.charAt(i));
+		}
+		if(sumOfNumbers%5==0 && sumOfNumbers%3==0) {
+			return 3;
+		}
+		else if(sumOfNumbers%3==0) {
+			return 1;
+		}
+		else if(sumOfNumbers%5==0) {
+			return 2;
+		}
+		return 0;
+	}
+
+	private boolean sumOfNumbersisOddorEven(String phoneNumber) {
+		int oddOrEven=0;
+		for (int i = 0; i < phoneNumber.length(); i++) {
+			oddOrEven+=Character.getNumericValue(phoneNumber.charAt(i));
+		}
+		if(oddOrEven%2==0) {
+			return true;
+		}
+		return false;
 	}
 
 	private static boolean isAllDigitsSame(String phoneNumber) {
@@ -145,16 +218,13 @@ public class PatternCheckerServiceImpl implements PatternCheckerService {
 		return true;
 	}
 
-//	public static void main(String[] args) {
-//		List<String> phoneNumbers=Arrays.asList("9900135729","9916878237","9999999999");
-//	
-//		PatternCheckerServiceImpl checker=new PatternCheckerServiceImpl();
-//		Map<String,Integer> answer=checker.checkPatterns(phoneNumbers);
-//		System.out.println(answer);
-//		
-//		System.out.println(hasRepeatedDigit(""));
-//		
-//	}
+	public static void main(String[] args) {
+		List<String> phoneNumbers=Arrays.asList("9880928712","9916878237","9999999991","9915737911","8860244821","1111122222","1212121212","8317360584","9353891317");
+	
+		PatternCheckerServiceImpl checker=new PatternCheckerServiceImpl();
+		Map<String,Integer> answer=checker.checkPatterns(phoneNumbers);
+		System.out.println(answer);
+	}
 
 }
 

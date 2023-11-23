@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/Kruthik.B/projects/javaTraining/springHib/src/main/webapp/WEB-INF/lib/spring-test-3.2.3.RELEASE.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
