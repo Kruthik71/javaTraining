@@ -28,11 +28,11 @@ public class TodoBusinessImplMockTest {
 
 		List<String> todos = Arrays.asList("Kruthik", "Spring", "Spring 1");
 
-		when(todoServiceMock.retrieveTodos("Gagan")).thenReturn(todos);
+		when(todoServiceMock.retrieveTodos("Praveen")).thenReturn(todos);
 
 		TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
 
-		List<String> filteredTodos = todoBusinessImpl.retrieveTodosRelatedToSpring("Gagan");
+		List<String> filteredTodos = todoBusinessImpl.retrieveTodosRelatedToSpring("Praveen");
 
 		assertEquals(2, filteredTodos.size());
 	}
